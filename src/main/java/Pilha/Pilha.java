@@ -1,3 +1,5 @@
+package Pilha;
+
 import java.util.EmptyStackException;
 
 public class Pilha <T> {
@@ -44,5 +46,30 @@ public class Pilha <T> {
         }
         return topo + 1;
     }
+
+    public Integer[] getElementos() {
+        return elementos;
+    }
+
+    public void setElementos(Integer[] elementos) {
+        this.elementos = elementos;
+    }
+
+    public Integer getTopo() {
+        return topo;
+    }
+
+    public void setTopo(Integer topo) {
+        this.topo = topo;
+    }
+
+    public Integer getVar() {
+        return var;
+    }
+
+    public void setVar(Integer var) {
+        this.var = var;
+    }
+
 
 }
