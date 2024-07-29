@@ -1,4 +1,4 @@
-package Lista;
+package Pilha;
 
 public class Node {
 

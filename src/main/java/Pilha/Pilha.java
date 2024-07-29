@@ -1,75 +1,53 @@
 package Pilha;
 
-import java.util.EmptyStackException;
+ public class Pilha {
+     private Node top;
 
-public class Pilha <T> {
 
-    private Integer[] elementos;
+     public boolean isEmpty() {
+         return top == null;
+     }
 
-    private Integer topo;
 
-    private Integer var;
+     public void push(int var) { // O(1) adiciona um elemento no topo da pilha
+         Node newNode = new Node(var);
+         newNode.setNext(top);
+         top = newNode;
+     }
 
-    public Pilha(Integer var) {
-        this.elementos = new Integer[10];
-        this.topo = 0;
-        this.var = var;
-    }
+     public int pop() { // O(1) remove o elemento do topo da pilha
+         if (isEmpty()) {
+             throw new RuntimeException("Pilha vazia");
+         }
+         int data = top.getVar();
+         top = top.getNext();
+         return data;
+     }
 
-    public void push() {
-        elementos[topo] = var;
-        topo++;
-    }
+     public int top() {
+         if (isEmpty()) {
+             throw new RuntimeException("Pilha vazia");
+         }
+         return top.getVar();
+     }
 
-    public T pop(){
-        if (isEmpty()) {
-            throw new EmptyStackException();
+    public int size() {
+        int count = 0;
+        Node current = top;
+        while (current != null) {
+            count++;
+            current = current.getNext();
         }
-        topo--;
-        return (T) elementos[topo];
+        return count;
     }
 
-    public boolean isEmpty(){
-        return topo == 0;
-    }
+     public void printPilha() {
+         Node node = top;
+         while (node != null) {
+             System.out.print(node.getVar() + " ");
+             node = node.getNext();
+         }
+         System.out.println();
+     }
+ }
 
-    public T top(){
-        if (isEmpty()) {
-            throw new EmptyStackException();
-        }
-        return (T) elementos[topo - 1];
-    }
-
-    public Integer size(){
-        if (isEmpty()) {
-            throw new EmptyStackException();
-        }
-        return topo + 1;
-    }
-
-    public Integer[] getElementos() {
-        return elementos;
-    }
-
-    public void setElementos(Integer[] elementos) {
-        this.elementos = elementos;
-    }
-
-    public Integer getTopo() {
-        return topo;
-    }
-
-    public void setTopo(Integer topo) {
-        this.topo = topo;
-    }
-
-    public Integer getVar() {
-        return var;
-    }
-
-    public void setVar(Integer var) {
-        this.var = var;
-    }
-
-
-}
